@@ -3,9 +3,14 @@ on:
   workflow_dispatch
 jobs:
   test:
-    name: Tests
+    name: Tests - ${{ matrix.project }} - Shard ${{ matrix.shardIndex }} of ${{ matrix.shardTotal }}
     timeout-minutes: 30
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project: [chromium, firefox]
+        shardIndex: [1, 2]
+        shardTotal: [2]
     steps:
       - name: Checkout Repository
         id: checkout-repository
@@ -34,10 +39,13 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
-        run: npx playwright test
-      - uses: actions/upload-artifact@v3
+        run: npx playwright test --project=${{ matrix.project }} --shard=${{ matrix.shardIndex }}/${{ strategy.job-total }}
+      - name: Upload Playwright HTML Report
+        id: upload-playwright-html-report
+        uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: playwright-report
+          name: playwright-report-${{ matrix.project }}-${{ matrix.shardIndex }}_${{ matrix.shardTotal }}
           path: playwright-report/
-          retention-days: 30
+          if-no-files-found: ignore
+          retention-days: 1
