@@ -2,15 +2,10 @@ name: Playwright Tests
 on:
   workflow_dispatch
 jobs:
-  test:
-    name: Tests - ${{ matrix.project }} - Shard ${{ matrix.shardIndex }} of ${{ matrix.shardTotal }}
-    timeout-minutes: 30
+  install:
+    name: Install
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        project: [chromium, firefox]
-        shardIndex: [1, 2]
-        shardTotal: [2]
+    timeout-minutes: 30
     steps:
       - name: Checkout Repository
         id: checkout-repository
@@ -35,9 +30,25 @@ jobs:
             ~/.cache/ms-playwright
           key: playwright-${{ hashFiles('package-lock.json') }}
       - name: Install dependencies
+        id: install-dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
       - name: Install Playwright Browsers
+        id: install-playwright-browsers
+        if: steps.cache-playwright.outputs.cache-hit != 'true'
         run: npx playwright install --with-deps
+
+  test:
+    name: Tests - ${{ matrix.project }} - Shard ${{ matrix.shardIndex }} of ${{ matrix.shardTotal }}
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+    needs: [install]
+    strategy:
+      matrix:
+        project: [chromium, firefox]
+        shardIndex: [1, 2]
+        shardTotal: [2]
+    steps:
       - name: Run Playwright tests
         run: npx playwright test --project=${{ matrix.project }} --shard=${{ matrix.shardIndex }}/${{ strategy.job-total }}
       - name: Upload Playwright HTML Report
