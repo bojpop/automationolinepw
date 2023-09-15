@@ -49,6 +49,9 @@ jobs:
         shardIndex: [1, 2]
         shardTotal: [2]
     steps:
+      - name: Install Playwright Browsers
+        id: install-playwright-browsers
+        run: npx playwright install --with-deps
       - name: Run Playwright tests
         run: npx playwright test --project=${{ matrix.project }} --shard=${{ matrix.shardIndex }}/${{ strategy.job-total }}
       - name: Upload Playwright HTML Report
