@@ -3,3 +3,11 @@ node_modules/
 /playwright-report/
 /playwright/.cache/
 allure-results/
+allure-report/
+
+# IDE - VSCode
+.vscode/*
+.history/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/extensions.json
