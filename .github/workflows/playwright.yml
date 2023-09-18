@@ -74,7 +74,7 @@ jobs:
         id: install-playwright-system-dependencies
         run: npx playwright install-deps ${{ matrix.project }}
       - name: Run Playwright tests
-        run: npx playwright test --project=${{ matrix.project }} --shard=${{ matrix.shardIndex }}/${{ strategy.job-total }}
+        run: npx playwright test --project=${{ matrix.project }} --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: Upload Playwright HTML Report
         id: upload-playwright-html-report
         uses: actions/upload-artifact@v3
