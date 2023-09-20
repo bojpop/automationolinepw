@@ -84,13 +84,13 @@ jobs:
           path: playwright-report/
           if-no-files-found: ignore
           retention-days: 1
-      - name: Upload allure report
-        id: upload-allure-report
+      - name: Upload allure results
+        id: upload-allure-results
         uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: allure-report-${{ matrix.project }}-${{ matrix.shardIndex }}_${{ matrix.shardTotal }}
-          path: allure-report/
+          name: allure-results-${{ matrix.project }}-${{ matrix.shardIndex }}_${{ matrix.shardTotal }}
+          path: allure-results/
           if-no-files-found: ignore
           retention-days: 1
       
