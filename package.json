@@ -9,7 +9,7 @@
     "allure:open": "npx allure open ./allure-report",
     "allure:serve": "npx allure serve",
     "posttest": "npm run allure:generate",
-    "merge:report:playwright": "npm run merge-playwright-reports.js"
+    "merge:report:playwright": "node merge-playwright-reports.js"
   },
   "keywords": [],
   "author": "",
