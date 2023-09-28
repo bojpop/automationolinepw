@@ -75,15 +75,27 @@ jobs:
         run: npx playwright install-deps ${{ matrix.project }}
       - name: Run Playwright tests
         run: npx playwright test --project=${{ matrix.project }} --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
-      - name: Upload Playwright HTML Report
-        id: upload-playwright-html-report
+        env:
+          ENV: local
+          PWTEST_BLOB_REPORT_NAME: ${{ matrix.project }}
+      - name: Upload Playwright Blob Report
+        id: upload-playwright-blob-report
         uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: playwright-report-${{ matrix.project }}-${{ matrix.shardIndex }}_${{ matrix.shardTotal }}
-          path: playwright-report/
+          name: playwright-all-blob-reports
+          path: playwright-blob-report
           if-no-files-found: ignore
           retention-days: 1
+      # - name: Upload Playwright HTML Report
+      #   id: upload-playwright-html-report
+      #   uses: actions/upload-artifact@v3
+      #   if: always()
+      #   with:
+      #     name: playwright-report-${{ matrix.project }}-${{ matrix.shardIndex }}_${{ matrix.shardTotal }}
+      #     path: playwright-report/
+      #     if-no-files-found: ignore
+      #     retention-days: 1
       - name: Upload allure results
         id: upload-allure-results
         uses: actions/upload-artifact@v3
@@ -137,7 +149,7 @@ jobs:
         uses: actions/download-artifact@v3
       - name: Merge Playwright HTML Reports
         id: merge-playwright-html-reports
-        run: npm run merge:report:playwright
+        run: npx playwright merge-reports --reporter html ./playwright-all-blob-reports
       - name: Move to Reports folder
         id: move-to-reports-folder
         run: |
