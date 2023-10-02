@@ -25,7 +25,8 @@ module.exports = defineConfig({
   ? [
       ['list'],
       ['html', { open: 'never' }],
-      ['blob', { outputDir: 'playwright-blob-report' }]
+      ['blob', { outputDir: 'playwright-blob-report' }],
+      ['allure-playwright']
     ]
   : [
       ['list'],
