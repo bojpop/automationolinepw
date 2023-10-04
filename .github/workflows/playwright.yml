@@ -149,8 +149,10 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           path: allure-results/
-      # - name: Allure Report with history
-      #   uses: simple-elf/allure-report-action@v1.7
+      - name: List Artifact Files
+        run: |
+          # List the contents of the downloaded artifact
+          ls -l allure-results
       - name: Test marketplace action
         uses: simple-elf/allure-report-action@master
         if: always()
