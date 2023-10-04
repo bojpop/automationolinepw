@@ -139,7 +139,7 @@ jobs:
         id: download-artifacts
         uses: actions/download-artifact@v3
         with:
-          name: allure-results
+          name: allure-results-chromium-1_2
           path: allure-results/
       - name: Merge Playwright HTML Reports
         id: merge-playwright-html-reports
