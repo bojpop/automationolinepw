@@ -141,6 +141,12 @@ jobs:
       - name: Merge Playwright HTML Reports
         id: merge-playwright-html-reports
         run: npx playwright merge-reports --reporter html ./playwright-all-blob-reports
+      - name: Install Allure Command-Line Tool
+        run: |
+          # Install Allure
+          wget https://github.com/allure-framework/allure2/releases/download/2.24.0/allure-2.24.0.tgz
+          tar -zxvf allure-2.24.0.tgz
+          export PATH=$PATH:$(pwd)/allure-2.24.0/bin
       - name: Merge Allure reports
         id: merge-allure-results
         run: allure generate ${{ github.workspace }} -o allure-report
