@@ -138,9 +138,12 @@ jobs:
       - name: Download Artifacts
         id: download-artifacts
         uses: actions/download-artifact@v3
+        with:
+          name: playwright-all-blob-reports
+          path: playwright-report/
       - name: Merge Playwright HTML Reports
         id: merge-playwright-html-reports
-        run: npx playwright merge-reports --reporter html ./playwright-all-blob-reports
+        run: npx playwright merge-reports --reporter html ./playwright-report
       - name: Download Artifacts
         id: download-artifacts-allure
         uses: actions/download-artifact@v3
