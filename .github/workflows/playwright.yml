@@ -141,10 +141,14 @@ jobs:
       - name: Merge Playwright HTML Reports
         id: merge-playwright-html-reports
         run: npx playwright merge-reports --reporter html ./playwright-all-blob-reports
+      - name: Merge Allure reports
+        id: merge-allure-results
+        run: allure generate ${{ github.workspace }} -o allure-report
       - name: Move to Reports folder
         id: move-to-reports-folder
         run: |
           mv playwright-report reports/playwright
+          mv allure-report reports/allure
         shell: bash
       - name: Setup Pages
         id: setup-pages
