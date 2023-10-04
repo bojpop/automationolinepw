@@ -148,7 +148,6 @@ jobs:
         id: download-artifacts-allure
         uses: actions/download-artifact@v3
         with:
-          name: allure-results-chromium-1_2 allure-results-chromium-2_2 allure-results-firefox-1_2 allure-results-firefox-2_2
           path: allure-results/
       - name: Allure Report with history
         uses: simple-elf/allure-report-action@v1.7
