@@ -149,8 +149,8 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           path: allure-results/
-      - name: Allure Report with history
-        uses: simple-elf/allure-report-action@v1.7
+      # - name: Allure Report with history
+      #   uses: simple-elf/allure-report-action@v1.7
       - name: Test marketplace action
         uses: simple-elf/allure-report-action@master
         if: always()
