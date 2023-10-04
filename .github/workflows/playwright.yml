@@ -148,8 +148,8 @@ jobs:
         if: always()
         id: allure-report
         with:
-          allure_results: ${{ github.workspace }}
-          gh_pages: gh-pages
+          allure_results: allure-results
+          #gh_pages: gh-pages
           allure_report: reports/allure-report
           allure_history: reports/allure-history
       - name: Move to Reports folder
