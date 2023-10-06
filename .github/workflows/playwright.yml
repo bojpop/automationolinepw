@@ -139,35 +139,40 @@ jobs:
         id: download-artifacts
         uses: actions/download-artifact@v3
         with:
-          name: playwright-all-blob-reports
-          path: playwright-report/
+          path: reports/
+      # - name: Download Artifacts
+      #   id: download-artifacts
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: playwright-all-blob-reports
+      #     path: playwright-report/
       - name: Merge Playwright HTML Reports
         id: merge-playwright-html-reports
-        run: npx playwright merge-reports --reporter html ./playwright-report
-      - name: Download Artifacts
-        id: download-artifacts-allure1
-        uses: actions/download-artifact@v3
-        with:
-          name: allure-results-chromium-1_2
-          path: allure-results/
-      - name: Download Artifacts
-        id: download-artifacts-allure2
-        uses: actions/download-artifact@v3
-        with:
-          name: allure-results-chromium-2_2
-          path: allure-results/
-      - name: Download Artifacts
-        id: download-artifacts-allure3
-        uses: actions/download-artifact@v3
-        with:
-          name: allure-results-firefox-1_2
-          path: allure-results/
-      - name: Download Artifacts
-        id: download-artifacts-allure4
-        uses: actions/download-artifact@v3
-        with:
-          name: allure-results-firefox-2_2
-          path: allure-results/
+        run: npx playwright merge-reports --reporter html ./reports
+      # - name: Download Artifacts
+      #   id: download-artifacts-allure1
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: allure-results-chromium-1_2
+      #     path: allure-results/
+      # - name: Download Artifacts
+      #   id: download-artifacts-allure2
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: allure-results-chromium-2_2
+      #     path: allure-results/
+      # - name: Download Artifacts
+      #   id: download-artifacts-allure3
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: allure-results-firefox-1_2
+      #     path: allure-results/
+      # - name: Download Artifacts
+      #   id: download-artifacts-allure4
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: allure-results-firefox-2_2
+      #     path: allure-results/
       - name: List Artifact Files
         run: |
           # List the contents of the downloaded artifact
@@ -177,7 +182,7 @@ jobs:
         if: always()
         id: allure-report
         with:
-          allure_results: allure-results/
+          allure_results: reports/
           #gh_pages: gh-pages
           allure_report: reports/allure-report
           allure_history: reports/allure-history
