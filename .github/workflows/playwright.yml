@@ -140,6 +140,11 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           # name: playwright-all-blob-reports
+          name: |
+            allure-results-chromium-1_2
+            allure-results-chromium-2_2
+            allure-results-firefox-1_2
+            allure-results-firefox-2_2
           path: reports/
       # - name: Download Artifacts
       #   id: download-artifacts
