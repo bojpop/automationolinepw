@@ -139,6 +139,7 @@ jobs:
         id: download-artifacts
         uses: actions/download-artifact@v3
         with:
+          name: playwright-all-blob-reports
           path: reports/
       # - name: Download Artifacts
       #   id: download-artifacts
