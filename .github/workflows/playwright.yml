@@ -166,7 +166,7 @@ jobs:
         id: download-artifacts-allure4
         uses: actions/download-artifact@v3
         with:
-          name: allure-results-firefox-1_2
+          name: allure-results-firefox-2_2
           path: allure-results/
       - name: List Artifact Files
         run: |
