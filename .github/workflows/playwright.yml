@@ -187,11 +187,11 @@ jobs:
           #gh_pages: gh-pages
           allure_report: reports/allure-report
           allure_history: reports/allure-history
-      # - name: Move to Reports folder
-      #   id: move-to-reports-folder
-      #   run: |
-      #     mv playwright-report reports/playwright
-      #   shell: bash
+      - name: Move to Reports folder
+        id: move-to-reports-folder
+        run: |
+          mv playwright-report reports/playwright
+        shell: bash
       - name: Setup Pages
         id: setup-pages
         uses: actions/configure-pages@v3
