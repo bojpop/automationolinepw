@@ -141,10 +141,14 @@ jobs:
         with:
           path:
             allure-results/
+      - name: Delete html artifact
+        id: delete-html-artifact
+        run: |
+            rm allure-results/playwright-all-blob-reports
       # - name: Move artifacts to appropriate folders
       #   id: move-to-allure-reports-folder
       #   run: |
-      #     mv ./allure-results/playwright-all-blob-reports ./reports/
+      #     mv allure-results/playwright-all-blob-reports/ reports/
       #   shell: bash
       # - name: Download Artifacts
       #   id: download-artifacts
