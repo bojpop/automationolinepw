@@ -138,15 +138,14 @@ jobs:
       - name: Download Artifacts
         id: download-artifacts
         uses: actions/download-artifact@v3
-        with:
-          path: playwright-report/
-      - name: Move Allure artifacts
+      - name: Move artifacts to appropriate folders
         id: move-to-allure-reports-folder
         run: |
           mv allure-results-chromium-1_2 allure-results/
           mv allure-results-chromium-2_2 allure-results/
           mv allure-results-firefox-1_2 allure-results/
           mv allure-results-firefox-2_2 allure-results/
+          mv playwright-all-blob-reports reports/playwright
         shell: bash
       # - name: Download Artifacts
       #   id: download-artifacts
