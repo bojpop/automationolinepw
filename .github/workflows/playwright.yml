@@ -183,10 +183,10 @@ jobs:
       #   with:
       #     name: allure-results-firefox-2_2
       #     path: allure-results/
-      # - name: List Artifact Files
-      #   run: |
-      #     # List the contents of the downloaded artifact
-      #     ls -l allure-results
+      - name: List Artifact Files
+        run: |
+          # List the contents of the downloaded artifact
+          ls -l allure-results
       - name: Test marketplace action
         uses: simple-elf/allure-report-action@master
         if: always()
@@ -196,11 +196,11 @@ jobs:
           #gh_pages: gh-pages
           allure_report: reports/allure-report
           allure_history: reports/allure-history
-      # - name: Move to Reports folder
-      #   id: move-to-reports-folder
-      #   run: |
-      #     mv playwright-report reports/playwright
-      #   shell: bash
+      - name: Move to Reports folder
+        id: move-to-reports-folder
+        run: |
+          mv playwright-report reports/playwright
+        shell: bash
       - name: Setup Pages
         id: setup-pages
         uses: actions/configure-pages@v3
