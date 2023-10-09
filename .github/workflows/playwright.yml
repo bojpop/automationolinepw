@@ -182,10 +182,10 @@ jobs:
       - name: Move artifacts to appropriate folders
         id: move-to-allure-results
         run: |
-          mv allure-results-chromium-1_2/* ./allure-results
-          mv allure-results-chromium-2_2/* ./allure-results
-          mv allure-results-firefox-1_2/* ./allure-results
-          mv allure-results-firefox-2_2/* ./allure-results
+          mv allure-results-chromium-1_2/* allure-results/
+          mv allure-results-chromium-2_2/* allure-results/
+          mv allure-results-firefox-1_2/* allure-results/
+          mv allure-results-firefox-2_2/* allure-results/
         shell: bash
       - name: List Artifact Files
         run: |
