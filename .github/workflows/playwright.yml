@@ -135,12 +135,12 @@ jobs:
           path: |
             ~/.cache/ms-playwright
           key: playwright-${{ hashFiles('package-lock.json') }}
-      # - name: Download Artifacts
-      #   id: download-artifacts
-      #   uses: actions/download-artifact@v3
-      #   with:
-      #     path:
-      #       allure-results/
+      - name: Download Artifacts
+        id: download-artifacts
+        uses: actions/download-artifact@v3
+        # with:
+        #   path:
+        #     allure-results/
       # - name: Move artifacts to appropriate folders
       #   id: move-to-allure-reports-folder
       #   run: |
@@ -152,33 +152,41 @@ jobs:
       #   with:
       #     name: playwright-all-blob-reports
       #     path: playwright-report/
-      # - name: Merge Playwright HTML Reports
-      #   id: merge-playwright-html-reports
-      #   run: npx playwright merge-reports --reporter html ./playwright-all-blob-reports
-      - name: Download Artifacts
-        id: download-artifacts-allure1
-        uses: actions/download-artifact@v3
-        with:
-          name: allure-results-chromium-1_2
-          path: allure-results/
-      - name: Download Artifacts
-        id: download-artifacts-allure2
-        uses: actions/download-artifact@v3
-        with:
-          name: allure-results-chromium-2_2
-          path: allure-results/
-      - name: Download Artifacts
-        id: download-artifacts-allure3
-        uses: actions/download-artifact@v3
-        with:
-          name: allure-results-firefox-1_2
-          path: allure-results/
-      - name: Download Artifacts
-        id: download-artifacts-allure4
-        uses: actions/download-artifact@v3
-        with:
-          name: allure-results-firefox-2_2
-          path: allure-results/
+      - name: Merge Playwright HTML Reports
+        id: merge-playwright-html-reports
+        run: npx playwright merge-reports --reporter html ./playwright-all-blob-reports
+      # - name: Download Artifacts
+      #   id: download-artifacts-allure1
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: allure-results-chromium-1_2
+      #     path: allure-results/
+      # - name: Download Artifacts
+      #   id: download-artifacts-allure2
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: allure-results-chromium-2_2
+      #     path: allure-results/
+      # - name: Download Artifacts
+      #   id: download-artifacts-allure3
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: allure-results-firefox-1_2
+      #     path: allure-results/
+      # - name: Download Artifacts
+      #   id: download-artifacts-allure4
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: allure-results-firefox-2_2
+      #     path: allure-results/
+      - name: Move artifacts to appropriate folders
+        id: move-to-allure-results
+        run: |
+          mv allure-results-chromium-1_2/* allure-results
+          mv allure-results-chromium-2_2/* allure-results
+          mv allure-results-firefox-1_2/* allure-results
+          mv allure-results-firefox-2_2/* allure-results
+        shell: bash
       - name: List Artifact Files
         run: |
           # List the contents of the downloaded artifact
@@ -192,11 +200,11 @@ jobs:
           #gh_pages: gh-pages
           allure_report: reports/allure-report
           allure_history: reports/allure-history
-      # - name: Move to Reports folder
-      #   id: move-to-reports-folder
-      #   run: |
-      #     mv playwright-report reports/playwright
-      #   shell: bash
+      - name: Move to Reports folder
+        id: move-to-reports-folder
+        run: |
+          mv playwright-report reports/playwright
+        shell: bash
       - name: Setup Pages
         id: setup-pages
         uses: actions/configure-pages@v3
