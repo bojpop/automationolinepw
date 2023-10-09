@@ -144,7 +144,7 @@ jobs:
       - name: Move artifacts to appropriate folders
         id: move-to-allure-reports-folder
         run: |
-          mv allure-results/playwright-all-blob-reports reports/
+          mv ./allure-results/playwright-all-blob-reports ./reports/
         shell: bash
       # - name: Download Artifacts
       #   id: download-artifacts
