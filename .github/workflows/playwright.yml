@@ -179,6 +179,10 @@ jobs:
       #   with:
       #     name: allure-results-firefox-2_2
       #     path: allure-results/
+      - name: Create Unpacked Directory
+        run: |
+          # Create a directory to store the unpacked results
+          mkdir -p allure-results
       - name: Move artifacts to appropriate folders
         id: move-to-allure-results
         run: |
