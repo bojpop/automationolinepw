@@ -115,7 +115,7 @@ jobs:
     steps:
       - name: Checkout Repository
         id: checkout-repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Setup Node
         id: setup-node
         uses: actions/setup-node@v3
@@ -138,47 +138,9 @@ jobs:
       - name: Download Artifacts
         id: download-artifacts
         uses: actions/download-artifact@v3
-        # with:
-        #   path:
-        #     allure-results/
-      # - name: Move artifacts to appropriate folders
-      #   id: move-to-allure-reports-folder
-      #   run: |
-      #     mv allure-results/playwright-all-blob-reports ./
-      #   shell: bash
-      # - name: Download Artifacts
-      #   id: download-artifacts
-      #   uses: actions/download-artifact@v3
-      #   with:
-      #     name: playwright-all-blob-reports
-      #     path: playwright-report/
       - name: Merge Playwright HTML Reports
         id: merge-playwright-html-reports
-        run: npx playwright merge-reports --reporter html ./playwright-all-blob-reports
-      # - name: Download Artifacts
-      #   id: download-artifacts-allure1
-      #   uses: actions/download-artifact@v3
-      #   with:
-      #     name: allure-results-chromium-1_2
-      #     path: allure-results/
-      # - name: Download Artifacts
-      #   id: download-artifacts-allure2
-      #   uses: actions/download-artifact@v3
-      #   with:
-      #     name: allure-results-chromium-2_2
-      #     path: allure-results/
-      # - name: Download Artifacts
-      #   id: download-artifacts-allure3
-      #   uses: actions/download-artifact@v3
-      #   with:
-      #     name: allure-results-firefox-1_2
-      #     path: allure-results/
-      # - name: Download Artifacts
-      #   id: download-artifacts-allure4
-      #   uses: actions/download-artifact@v3
-      #   with:
-      #     name: allure-results-firefox-2_2
-      #     path: allure-results/
+        run: npx playwright merge-reports --reporter html ./playwright-all-blob-reports      
       - name: Create Unpacked Directory
         run: |
           # Create a directory to store the unpacked results
@@ -191,35 +153,46 @@ jobs:
           mv allure-results-firefox-1_2/* allure-results/
           mv allure-results-firefox-2_2/* allure-results/
         shell: bash
-      - name: List Artifact Files
-        run: |
-          # List the contents of the downloaded artifact
-          ls -l allure-results
+      - name: Get Allure history
+        uses: actions/checkout@v4
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages  
       - name: Test marketplace action
         uses: simple-elf/allure-report-action@master
         if: always()
         id: allure-report
         with:
           allure_results: allure-results/
-          #gh_pages: gh-pages
+          gh_pages: gh-pages
           allure_report: reports/allure-report
           allure_history: reports/allure-history
-      - name: Move to Reports folder
-        id: move-to-reports-folder
-        run: |
-          mv playwright-report reports/playwright
-        shell: bash
-      - name: Setup Pages
-        id: setup-pages
-        uses: actions/configure-pages@v3
-      - name: Upload Pages Artifact
-        id: upload-pages-artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: reports/
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+          keep_reports: 20
+      - name: Deploy report to Github Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v2
+        env:
+          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: allure-history
+      # - name: Move to Reports folder
+      #   id: move-to-reports-folder
+      #   run: |
+      #     mv playwright-report reports/playwright
+      #   shell: bash
+      # - name: Setup Pages
+      #   id: setup-pages
+      #   uses: actions/configure-pages@v3
+      # - name: Upload Pages Artifact
+      #   id: upload-pages-artifact
+      #   uses: actions/upload-pages-artifact@v2
+      #   with:
+      #     path: reports/
+      # - name: Deploy to GitHub Pages
+      #   id: deployment
+      #   uses: actions/deploy-pages@v2
       - name: Delete Unnecessary Artifacts
         id: delete-unnecessary-artifacts
         uses: geekyeggo/delete-artifact@v2
@@ -227,6 +200,7 @@ jobs:
           name: |
             playwright-report-*
             test-results-*
-            monocart-report-*
+            allure-report-*
+            allure-results-*
           failOnError: false
 
