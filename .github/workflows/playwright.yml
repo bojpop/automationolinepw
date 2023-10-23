@@ -153,10 +153,6 @@ jobs:
           mv allure-results-firefox-1_2/* allure-results/
           mv allure-results-firefox-2_2/* allure-results/
         shell: bash
-      # - name: Create gh-pages directory
-      #   run: |
-      #     # Create a directory to store the unpacked results
-      #     mkdir -p allure-results
       - name: Get Allure history
         uses: actions/checkout@v4
         if: always()
@@ -178,10 +174,8 @@ jobs:
         if: always()
         uses: peaceiris/actions-gh-pages@v3
         with:
-          # ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          # publish_branch: gh-pages
-          publish_dir: reports/allure-history
+          publish_branch: gh-pages
+          publish_dir: reports/allure-report
       # - name: Move to Reports folder
       #   id: move-to-reports-folder
       #   run: |
