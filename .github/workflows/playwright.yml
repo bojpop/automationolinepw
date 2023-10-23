@@ -141,7 +141,7 @@ jobs:
       - name: Merge Playwright HTML Reports
         id: merge-playwright-html-reports
         run: npx playwright merge-reports --reporter html ./playwright-all-blob-reports      
-      - name: Create Unpacked Directory
+      - name: Create allure-results directory
         run: |
           # Create a directory to store the unpacked results
           mkdir -p allure-results
@@ -153,6 +153,10 @@ jobs:
           mv allure-results-firefox-1_2/* allure-results/
           mv allure-results-firefox-2_2/* allure-results/
         shell: bash
+      # - name: Create gh-pages directory
+      #   run: |
+      #     # Create a directory to store the unpacked results
+      #     mkdir -p allure-results
       - name: Get Allure history
         uses: actions/checkout@v4
         if: always()
@@ -176,7 +180,7 @@ jobs:
         env:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: allure-history
+          PUBLISH_DIR: reports/allure-history
       # - name: Move to Reports folder
       #   id: move-to-reports-folder
       #   run: |
