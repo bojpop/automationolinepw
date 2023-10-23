@@ -180,8 +180,8 @@ jobs:
         with:
           # ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          # publish_dir: reports/allure-history
+          # publish_branch: gh-pages
+          publish_dir: reports/allure-history
       # - name: Move to Reports folder
       #   id: move-to-reports-folder
       #   run: |
