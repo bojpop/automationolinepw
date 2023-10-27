@@ -7,6 +7,16 @@ const { defineConfig, devices } = require('@playwright/test');
  */
 // require('dotenv').config();
 
+function getBaseUrl() {
+  const environment = process.env.ENV;
+  if (environment == undefined || environment == null) return 'https://automationintesting.online/';
+  else if (environment == 'prod') return 'https://automationintesting.online/';
+  else if (environment == 'local') return 'http://localhost';
+  else if (environment == 'kubeLocal') return 'http://kube.local';
+  else if (environment == 'docker') return 'http://rbp-proxy';
+  else return 'https://automationintesting.online/';
+}
+
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
@@ -35,7 +45,8 @@ module.exports = defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'https://automationintesting.online/',
+    baseURL: getBaseUrl(),
+    // 'https://automationintesting.online/',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'retain-on-failure',

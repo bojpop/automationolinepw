@@ -109,9 +109,9 @@ jobs:
     concurrency:
       group: 'pages'
       cancel-in-progress: true
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    # environment:
+    #   name: github-pages
+    #   url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout Repository
         id: checkout-repository
@@ -175,7 +175,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           publish_branch: gh-pages
-          publish_dir: reports/allure-report
+          publish_dir: reports/allure-history
       # - name: Move to Reports folder
       #   id: move-to-reports-folder
       #   run: |
