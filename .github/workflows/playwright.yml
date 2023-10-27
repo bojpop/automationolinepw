@@ -76,7 +76,7 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test --project=${{ matrix.project }} --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
         env:
-          ENV: kubeLocal
+          ENV: prod
           PWTEST_BLOB_REPORT_NAME: ${{ matrix.project }}
       - name: Upload Playwright Blob Report
         id: upload-playwright-blob-report
