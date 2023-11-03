@@ -153,30 +153,47 @@ jobs:
           mv allure-results-firefox-1_2/* allure-results/
           mv allure-results-firefox-2_2/* allure-results/
         shell: bash
-      - name: Get Allure history
-        uses: actions/checkout@v4
-        if: always()
-        continue-on-error: true
+      # - name: Get Allure history
+      #   uses: actions/checkout@v4
+      #   if: always()
+      #   continue-on-error: true
+      #   with:
+      #     ref: gh-pages
+      #     path: gh-pages  
+      # - name: Test marketplace action
+      #   uses: simple-elf/allure-report-action@master
+      #   if: always()
+      #   id: allure-report
+      #   with:
+      #     allure_results: allure-results/
+      #     gh_pages: gh-pages
+      #     allure_report: reports/allure-report
+      #     allure_history: reports/allure-history
+      #     keep_reports: 20
+      - name: Generate Allure Report
+        run: allure generate allure-results --clean -o reports/allure-report
+      - name: Copy Historical Data
+        run: |
+          if [ -d gh-pages/allure-history ]; then
+            cp -r gh-pages/allure-history/. reports/allure-report/history
+          fi
+      - name: Store Historical Data as Artifact
+        uses: actions/upload-artifact@v2
         with:
-          ref: gh-pages
-          path: gh-pages  
-      - name: Test marketplace action
-        uses: simple-elf/allure-report-action@master
-        if: always()
-        id: allure-report
-        with:
-          allure_results: allure-results/
-          gh_pages: gh-pages
-          allure_report: reports/allure-report
-          allure_history: reports/allure-history
-          keep_reports: 20
-      - name: Deploy
-        if: always()
+          name: allure-history
+          path: reports/allure-report/history
+      # - name: Deploy
+      #   if: always()
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_branch: gh-pages
+      #     publish_dir: reports/allure-history
+      - name: Deploy Allure Report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: reports/allure-history
+          publish_dir: reports/allure-report
       # - name: Move to Reports folder
       #   id: move-to-reports-folder
       #   run: |
@@ -200,7 +217,7 @@ jobs:
             authToken: ${{secrets.GITHUB_TOKEN}}
             context: 'Test report'
             state: 'success'
-            # sha: ${{ github.event.pull_request.head.sha }}
+            sha: ${{ github.event.workflow_dispatch.head.sha }}
             target_url: bojpop.github.io/automationolinepw/${{ github.run_number }}
       - name: Delete Unnecessary Artifacts
         id: delete-unnecessary-artifacts
