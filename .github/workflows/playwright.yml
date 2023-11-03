@@ -153,33 +153,33 @@ jobs:
           mv allure-results-firefox-1_2/* allure-results/
           mv allure-results-firefox-2_2/* allure-results/
         shell: bash
-      # - name: Get Allure history
-      #   uses: actions/checkout@v4
-      #   if: always()
-      #   continue-on-error: true
-      #   with:
-      #     ref: gh-pages
-      #     path: gh-pages  
-      - name: Test marketplace action
-        uses: simple-elf/allure-report-action@master
+      - name: Get Allure history
+        uses: actions/checkout@v4
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages  
+      - name: Build test report
+        uses: simple-elf/allure-report-action@v1.7
         if: always()
         id: allure-report
         with:
           allure_results: allure-results/
           gh_pages: gh-pages
           allure_report: reports/allure-report
-          # allure_history: reports/allure-history
+          allure_history: reports/allure-history
           keep_reports: 20
-      - name: Copy Historical Data
-        run: |
-          if [ -d gh-pages/allure-history ]; then
-            cp -r gh-pages/allure-history/. reports/allure-report/history
-          fi
-      - name: Store Historical Data as Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: allure-history
-          path: reports/allure-report/history
+      # - name: Copy Historical Data
+      #   run: |
+      #     if [ -d gh-pages/allure-history ]; then
+      #       cp -r gh-pages/allure-history/. reports/allure-report/history
+      #     fi
+      # - name: Store Historical Data as Artifact
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: allure-history
+      #     path: reports/allure-report/history
       # - name: Deploy
       #   if: always()
       #   uses: peaceiris/actions-gh-pages@v3
@@ -191,7 +191,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: reports/allure-report
+          publish_dir: reports/allure-report/history
       # - name: Move to Reports folder
       #   id: move-to-reports-folder
       #   run: |
