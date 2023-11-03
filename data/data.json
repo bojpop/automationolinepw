@@ -1,7 +1,0 @@
-{
-        "roomName": "Bojan",
-        "roomPrice": 230,
-        "type": "Single",
-        "accessible": "true",
-        "features": ["Wifi", "TV", "Radio"]
-}
