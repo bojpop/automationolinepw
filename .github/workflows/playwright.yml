@@ -191,7 +191,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: reports/allure-report/history
+          publish_dir: reports/allure-report
       # - name: Move to Reports folder
       #   id: move-to-reports-folder
       #   run: |
