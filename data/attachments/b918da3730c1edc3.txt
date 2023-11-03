@@ -11,8 +11,8 @@ https://automationintesting.online/room/
 https://automationintesting.online/images/e6ea54857498da9c4ef251d699f54b35-brackets.png
 https://automationintesting.online/images/2b23246f8d8e54e5aebf93dbf3191286-block.png
 https://automationintesting.online/images/61a697b408e2230b847e13de2456502c-goarrow.png
-https://www.google-analytics.com/j/collect?v=1&_v=j101&a=1052456946&t=pageview&_s=1&dl=https%3A%2F%2Fautomationintesting.online%2F&dp=%2F&ul=en-us&de=UTF-8&dt=Restful-booker-platform%20demo&sd=24-bit&sr=1280x720&vp=1280x720&je=0&_u=IEBAAEABAAAAACAAI~&jid=748710842&gjid=678352757&cid=89101802.1699015061&tid=UA-118712228-3&_gid=1120827029.1699015061&_r=1&_slc=1&z=1618847110
-https://www.google-analytics.com/collect?v=1&_v=j101&a=1052456946&t=pageview&_s=2&dl=https%3A%2F%2Fautomationintesting.online%2F&dp=%2F&ul=en-us&de=UTF-8&dt=Restful-booker-platform%20demo&sd=24-bit&sr=1280x720&vp=1280x720&je=0&_u=IEBAAEABAAAAACAAI~&jid=&gjid=&cid=89101802.1699015061&tid=UA-118712228-3&_gid=1120827029.1699015061&z=460931408
+https://www.google-analytics.com/j/collect?v=1&_v=j101&a=196855170&t=pageview&_s=1&dl=https%3A%2F%2Fautomationintesting.online%2F&dp=%2F&ul=en-us&de=UTF-8&dt=Restful-booker-platform%20demo&sd=24-bit&sr=1280x720&vp=1280x720&je=0&_u=IEBAAEABAAAAACAAI~&jid=1282060156&gjid=799208913&cid=1065083633.1699016473&tid=UA-118712228-3&_gid=1979367767.1699016473&_r=1&_slc=1&z=953771744
+https://www.google-analytics.com/collect?v=1&_v=j101&a=196855170&t=pageview&_s=2&dl=https%3A%2F%2Fautomationintesting.online%2F&dp=%2F&ul=en-us&de=UTF-8&dt=Restful-booker-platform%20demo&sd=24-bit&sr=1280x720&vp=1280x720&je=0&_u=IEBAAEABAAAAACAAI~&jid=&gjid=&cid=1065083633.1699016473&tid=UA-118712228-3&_gid=1979367767.1699016473&z=1370587255
 https://automationintesting.online/auth/validate
 https://automationintesting.online/auth/login
 https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0
