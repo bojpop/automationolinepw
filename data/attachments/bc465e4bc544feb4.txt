@@ -11,8 +11,8 @@ https://automationintesting.online/images/e6ea54857498da9c4ef251d699f54b35-brack
 https://automationintesting.online/images/2b23246f8d8e54e5aebf93dbf3191286-block.png
 https://automationintesting.online/images/61a697b408e2230b847e13de2456502c-goarrow.png
 https://www.google-analytics.com/analytics.js
-https://www.google-analytics.com/j/collect?v=1&_v=j101&a=1607249647&t=pageview&_s=1&dl=https%3A%2F%2Fautomationintesting.online%2F&dp=%2F&ul=en-us&de=UTF-8&dt=Restful-booker-platform%20demo&sd=24-bit&sr=1280x720&vp=1280x720&je=0&_u=IEBAAEABAAAAACAAI~&jid=868353483&gjid=1557524287&cid=2137467063.1699013778&tid=UA-118712228-3&_gid=1924770939.1699013778&_r=1&_slc=1&z=1681035953
-https://www.google-analytics.com/collect?v=1&_v=j101&a=1607249647&t=pageview&_s=2&dl=https%3A%2F%2Fautomationintesting.online%2F&dp=%2F&ul=en-us&de=UTF-8&dt=Restful-booker-platform%20demo&sd=24-bit&sr=1280x720&vp=1280x720&je=0&_u=IEBAAEABAAAAACAAI~&jid=&gjid=&cid=2137467063.1699013778&tid=UA-118712228-3&_gid=1924770939.1699013778&z=1948238311
+https://www.google-analytics.com/j/collect?v=1&_v=j101&a=547084526&t=pageview&_s=1&dl=https%3A%2F%2Fautomationintesting.online%2F&dp=%2F&ul=en-us&de=UTF-8&dt=Restful-booker-platform%20demo&sd=24-bit&sr=1280x720&vp=1280x720&je=0&_u=IEBAAEABAAAAACAAI~&jid=262978078&gjid=1973077384&cid=160144592.1699015100&tid=UA-118712228-3&_gid=833476671.1699015100&_r=1&_slc=1&z=295163622
+https://www.google-analytics.com/collect?v=1&_v=j101&a=547084526&t=pageview&_s=2&dl=https%3A%2F%2Fautomationintesting.online%2F&dp=%2F&ul=en-us&de=UTF-8&dt=Restful-booker-platform%20demo&sd=24-bit&sr=1280x720&vp=1280x720&je=0&_u=IEBAAEABAAAAACAAI~&jid=&gjid=&cid=160144592.1699015100&tid=UA-118712228-3&_gid=833476671.1699015100&z=1907862514
 https://www.mwtestconsultancy.co.uk/img/rbp-logo.png
 https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/17/65997/42915.png
 https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/17/65997/42916.png
@@ -45,6 +45,7 @@ https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/17/66002/42915.png
 https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/17/66002/42916.png
 https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/17/66002/42917.png
 https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0
+https://automationintesting.online/string
 https://www.mwtestconsultancy.co.uk/img/room2.jpg
 https://www.mwtestconsultancy.co.uk/img/testim/room2.jpg
 https://www.mwtestconsultancy.co.uk/img/room1.jpg
