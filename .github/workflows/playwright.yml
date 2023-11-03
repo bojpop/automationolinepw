@@ -208,15 +208,6 @@ jobs:
       # - name: Deploy to GitHub Pages
       #   id: deployment
       #   uses: actions/deploy-pages@v2
-      - name: Post the link to the report
-        if: always()
-        uses: Sibz/github-status-action@v1
-        with: 
-            authToken: ${{secrets.GITHUB_TOKEN}}
-            context: 'Test report'
-            state: 'success'
-            sha: ${{ github.event.workflow_dispatch.head.sha }}
-            target_url: bojpop.github.io/automationolinepw/${{ github.run_number }}
       - name: Delete Unnecessary Artifacts
         id: delete-unnecessary-artifacts
         uses: geekyeggo/delete-artifact@v2
