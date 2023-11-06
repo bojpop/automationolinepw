@@ -19,7 +19,7 @@
     "@playwright/test": "^1.38.0",
     "allure-commandline": "^2.24.1",
     "allure-playwright": "^2.6.0",
-    "jest": "^29.5.0"
+    "jest": "^29.7.0"
   },
   "dependencies": {
     "playwright-merge-html-reports": "^0.2.8"
