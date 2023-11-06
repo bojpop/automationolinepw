@@ -49,8 +49,8 @@ module.exports = defineConfig({
     // 'https://automationintesting.online/',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
-    // 'retain-on-failure',
+    trace: 'retain-on-failure',
+    // 'on-first-retry',
     // browserName: 'chromium',
     screenshot: 'only-on-failure',
     headless: true
