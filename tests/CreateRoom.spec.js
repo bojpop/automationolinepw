@@ -17,7 +17,7 @@ test.describe("Create room test", async () => {
         const radio = false
         const views = false
         
-        const poManager = new POManager(page, roomName)
+        const poManager = new POManager(page)
         // page.on('request', request=>console.log(request.url()));
         const homePage = poManager.getHomePage()
         homePage.goToApp()
@@ -28,7 +28,7 @@ test.describe("Create room test", async () => {
 
         await expect(loginForm.loginSuccess).toContainText(loginForm.loginSuccesText)
 
-        const createRoom = poManager.getCreateRoom()
+        const createRoom = poManager.getCreateRoom(roomName)
         createRoom.createRoom(roomName,type,accessible,price,wifi,refreshments,tv,safe,radio,views)
 
         await expect(createRoom.roomNameCheck).toHaveText(roomName)

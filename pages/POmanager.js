@@ -4,9 +4,8 @@ import {EditRoom} from './EditRoomPage'
 import {HomePage} from './HomePage';
 
 export class POManager{
-    constructor(page, roomName){
+    constructor(page){
         this.page = page;
-        this.roomName = roomName;
     }
 
     getHomePage(){
@@ -17,11 +16,11 @@ export class POManager{
         return new Authentication(this.page);
     }
 
-    getCreateRoom(){
-        return new CreateRoom(this.page, this.roomName);
+    getCreateRoom(roomName){
+        return new CreateRoom(this.page, roomName);
     }
 
-    getEditRoom(){
-        return new EditRoom(this.page, this.roomName);
+    getEditRoom(roomName){
+        return new EditRoom(this.page, roomName);
     }
 }

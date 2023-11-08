@@ -17,7 +17,7 @@ test.describe("Edit room test", async () => {
         const radio = false
         const views = false
 
-        const poManager = new POManager(page, roomName)
+        const poManager = new POManager(page)
         const homePage = poManager.getHomePage()
         homePage.goToApp()
         homePage.goToAdminPanel()
@@ -27,7 +27,7 @@ test.describe("Edit room test", async () => {
 
         await expect(loginForm.loginSuccess).toContainText(loginForm.loginSuccesText)
 
-        const createRoom = poManager.getCreateRoom()
+        const createRoom = poManager.getCreateRoom(roomName)
         await createRoom.createRoom(roomName,type,accessible,price,wifi,refreshments,tv,safe,radio,views)
 
         const roomNameEdit = faker.person.fullName();
@@ -41,7 +41,7 @@ test.describe("Edit room test", async () => {
         const radioEdit = true
         const viewsEdit = true
 
-        const editRoom = poManager.getEditRoom()
+        const editRoom = poManager.getEditRoom(roomName)
         await editRoom.roomNameToEdit.click()
 
         expect(await editRoom.checkRoomNameEdit(roomName)).toEqual("Room: "+ roomName)
