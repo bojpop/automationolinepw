@@ -8,14 +8,14 @@ test.describe("Create and book room API test", async () => {
     const username = 'admin';
     const password = 'password'
 
-    const roomName = faker.name.fullName();
+    const roomName = faker.person.fullName();
     const roomPrice = 230;
     const roomType = 'Single';
     let roomAccessible = true;
     let roomFeatures = ['Wifi', 'TV', 'Radio']
     
-    const firstname = faker.name.firstName();
-    const lastname = faker.name.lastName();
+    const firstname = faker.person.firstName();
+    const lastname = faker.person.lastName();
     let email = faker.internet.email();
     let phone = '123456789012';
     let checkin = '2022-12-13'

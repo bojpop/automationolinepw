@@ -11,7 +11,7 @@ test.describe("Create (API) and edit (UI) room test", async () => {
     const username = 'admin';
     const password = 'password'
 
-    const roomName = faker.name.fullName();
+    const roomName = faker.person.fullName();
     const roomPrice = 230;
     const roomType = 'Single';
     let roomAccessible = true;
@@ -31,7 +31,7 @@ test.describe("Create (API) and edit (UI) room test", async () => {
 
         expect(responseRoom.status()).toBe(201);
 
-        const roomNameEdit = faker.name.fullName();
+        const roomNameEdit = faker.person.fullName();
         const typeEdit = "Family";
         const accessibleEdit = "true";
         const priceEdit = "200";

@@ -6,7 +6,7 @@ import userData from '../data/users.json';
 test.describe("Edit room test", async () => {
     test('Edit room', async ({page})=>
     {
-        const roomName = faker.name.fullName();
+        const roomName = faker.person.fullName();
         const type = "Twin";
         const accessible = "true"
         const price = "50"
@@ -30,7 +30,7 @@ test.describe("Edit room test", async () => {
         const createRoom = poManager.getCreateRoom()
         await createRoom.createRoom(roomName,type,accessible,price,wifi,refreshments,tv,safe,radio,views)
 
-        const roomNameEdit = faker.name.fullName();
+        const roomNameEdit = faker.person.fullName();
         const typeEdit = "Family";
         const accessibleEdit = "true"
         const priceEdit = "200"

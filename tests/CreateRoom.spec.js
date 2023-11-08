@@ -6,7 +6,7 @@ import userData from '../data/users.json';
 test.describe("Create room test", async () => {
     test('Create room', async ({page,browser})=>
     {
-        const roomName = faker.name.fullName();
+        const roomName = faker.person.fullName();
         const type = "Twin";
         const accessible = "true"
         const price = "50"
