@@ -18,8 +18,8 @@ test.describe("Edit room test", async () => {
         const views = false
 
         const poManager = new POManager(page, roomName)
-        poManager.goToApp()
         const homePage = poManager.getHomePage()
+        homePage.goToApp()
         homePage.goToAdminPanel()
 
         const loginForm = poManager.getLoginForm()

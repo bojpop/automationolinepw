@@ -1,5 +1,3 @@
-import { faker } from '@faker-js/faker';
-
 export class CreateRoom {
     constructor(page,roomName){
         this.page = page;

@@ -8,8 +8,8 @@ test.describe("Authentication page", async () => {
 
     test.beforeEach(async ({page}) => {
         const poManager = new POManager(page)
-        poManager.goToApp()
         const homePage = poManager.getHomePage()
+        homePage.goToApp()
         homePage.goToAdminPanel()
         loginForm = poManager.getLoginForm()
     });

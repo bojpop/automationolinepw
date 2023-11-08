@@ -1,10 +1,10 @@
 import { test, expect, request } from '@playwright/test';
-import { faker } from '@faker-js/faker';
-import {POManager} from '../pages/POmanager';
+import { fakerSR_RS_latin as faker } from '@faker-js/faker';
+import { POManager } from '../pages/POmanager';
 import userData from '../data/users.json';
 
 test.describe("Create room test", async () => {
-    test('Create room', async ({page,browser})=>
+    test('Create room', async ({page})=>
     {
         const roomName = faker.person.fullName();
         const type = "Twin";
@@ -18,14 +18,12 @@ test.describe("Create room test", async () => {
         const views = false
         
         const poManager = new POManager(page, roomName)
-        // page.route('**/*.{jpg,png,jpeg}', route => route.abort());
-        page.on('request', request=>console.log(request.url()));
-        poManager.goToApp()
+        // page.on('request', request=>console.log(request.url()));
         const homePage = poManager.getHomePage()
+        homePage.goToApp()
         homePage.goToAdminPanel()
 
         const loginForm = poManager.getLoginForm()
-        // await page.screenshot({path: 'screenshot.png'})
         await loginForm.login(userData.User.username, userData.User.password)
 
         await expect(loginForm.loginSuccess).toContainText(loginForm.loginSuccesText)
