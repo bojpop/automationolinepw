@@ -4,7 +4,7 @@ import { POManager } from '../pages/POmanager';
 import userData from '../data/users.json';
 
 test.describe("Create room test", async () => {
-    test('Create room', async ({page})=>
+    test('Create room @sanity', async ({page})=>
     {
         const roomName = faker.person.fullName();
         const type = "Twin";

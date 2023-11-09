@@ -29,7 +29,7 @@ test.describe("Authentication page", async () => {
             await expect(loginForm.userName).toHaveAttribute('style',loginForm.errorRedBorder)
         });
 
-    test('Successfull login', async ()=>
+    test('Successfull login @sanity', async ()=>
         {
             test.step(`Step at the Test Level ${userData.User.username}`, async () => {
                 await loginForm.login(userData.User.username, userData.User.password)
