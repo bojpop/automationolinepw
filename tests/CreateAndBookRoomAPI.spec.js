@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { AuthenticationApi } from '../apis/AuthenticationApi';
 import { CreateRoomApi } from '../apis/CreateRoomApi';
-import { BookingRoom } from '../pages/BookingRoomPage';
+import { BookingRoomAPI } from '../pages/BookingRoomPage';
 import { faker } from '@faker-js/faker';
 
 test.describe("Create and book room API test", async () => {
@@ -43,7 +43,7 @@ test.describe("Create and book room API test", async () => {
 
         let roomId = responseRoomJSON.roomid
 
-        const bookRoom = new BookingRoom(page)
+        const bookRoom = new BookingRoomAPI(page)
         const responseBooking = await bookRoom.bookRoomApi(request, firstname, lastname, roomId, email, phone, checkin, checkout)
         
         expect(responseBooking.status()).toBe(201)

@@ -1,4 +1,4 @@
-export class BookingRoom {
+export class BookingRoomAPI {
     constructor(page){
         this.page = page;
     }

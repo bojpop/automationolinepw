@@ -1,11 +1,9 @@
-import { test, expect } from '@playwright/test';
+import { faker } from '@faker-js/faker';
+import { expect, test } from '@playwright/test';
 import { AuthenticationApi } from '../apis/AuthenticationApi';
 import { CreateRoomApi } from '../apis/CreateRoomApi';
-import { faker } from '@faker-js/faker';
-import { EditRoom } from '../pages/EditRoomPage';
-import { Authentication } from '../pages/AuthenticationPage';
 import userData from '../data/users.json';
-import { HomePage } from '../pages/HomePage';
+import { POManager } from '../pages/POmanager';
 
 test.describe("Create (API) and edit (UI) room test", async () => {
     const username = 'admin';
@@ -42,15 +40,16 @@ test.describe("Create (API) and edit (UI) room test", async () => {
         const radioEdit = true;
         const viewsEdit = true;
 
-        const homePage = new HomePage(page);
+        const poManager = new POManager(page);
+        const homePage = poManager.getHomePage();
         await homePage.goToApp();
         await homePage.goToAdminPanel();
-        const loginForm = new Authentication(page);
-        await loginForm.login(userData.User.username, userData.User.password)
+        const loginForm = poManager.getLoginForm();
+        await loginForm.login(userData.User.username, userData.User.password);
 
-        await expect(loginForm.loginSuccess).toContainText(loginForm.loginSuccesText)
+        await expect(loginForm.loginSuccess).toContainText(loginForm.loginSuccesText);
 
-        const editRoom = new EditRoom(page, roomName);
+        const editRoom = poManager.getEditRoom(roomName);
         await editRoom.roomNameToEdit.click();
 
         await editRoom.editRoomUpdate(roomNameEdit,typeEdit,accessibleEdit,priceEdit,editRoom.imageAfterEdit,editRoom.descriptionTextAfterEdit,
