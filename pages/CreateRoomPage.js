@@ -15,6 +15,7 @@ export class CreateRoom {
         this.roomNameCheck = page.getByText(`${roomName}`)
         this.getRoom = page.locator("div", { has : page.getByText(roomName)});
         this.checkBoxText1 = 'WiFi, Refreshments';
+        this.errorMessages = page.locator('.alert.alert-danger');
     }
 
     async hasWifi(wifi){
