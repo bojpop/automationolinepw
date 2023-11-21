@@ -14,7 +14,11 @@ export class CreateRoom {
         this.createButton = page.locator('#createRoom');
         this.roomNameCheck = page.getByText(`${roomName}`)
         this.getRoom = page.locator("div", { has : page.getByText(roomName)});
-        this.checkBoxText1 = 'WiFi, Refreshments';
+        this.checkBoxText0 = 'No features added to the room';
+        this.checkBoxText1 = 'WiFi, Radio, Refreshments';
+        this.checkBoxText2 = 'WiFi, Radio, Refreshments, Safe';
+        this.checkBoxText3 = 'WiFi, TV, Radio, Refreshments, Safe, Views';
+        this.checkBoxText4 = 'WiFi, TV, Radio, Refreshments, Safe, Views';
         this.errorMessages = page.locator('.alert.alert-danger');
     }
 
@@ -100,3 +104,11 @@ export class CreateRoom {
         return checkBoxes;
     }
 }
+
+export const RoomType = {
+    SINGLE: 'Single',
+    TWIN: 'Twin',
+    DOUBLE: 'Double',
+    FAMILY: 'Family',
+    SUITE: 'Suite'
+  }
