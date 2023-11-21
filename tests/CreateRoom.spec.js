@@ -1,6 +1,5 @@
 import { test, expect, request } from '@playwright/test';
-import { fakerSR_RS_latin as faker } from '@faker-js/faker';
-import { randFullName } from '@ngneat/falso';
+
 import { POManager } from '../pages/POmanager';
 import userData from '../data/users.json';
 import { RoomType } from '../pages/CreateRoomPage';
@@ -55,39 +54,6 @@ test.describe("Room management", async () => {
             expect(await createRoom.roomCheckBoxesCheck()).toEqual(createRoom[`checkBoxText${i}`])
         });
     }
-
-    // async function fetchData() {
-    //     // Replace this with your actual asynchronous data fetching logic
-    //     return [
-    //         [randFullName(), RoomType.SINGLE, "false", "80", false, false, false, false, false, false],
-    //         [randFullName(), RoomType.TWIN, "false", "150", true, true, false, false, true, false],
-    //         [randFullName(), RoomType.DOUBLE, "true", "200", true, true, false, true, true, false],
-    //         [randFullName(), RoomType.FAMILY, "true", "250", true, true, true, true, true, true],
-    //         [randFullName(), RoomType.SUITE, "true", "300", true, true, true, true, true, true]
-    //       ];
-    //   }
-    // test('Create room successfully @sanity', async ({page})=>
-    // {
-    //     const roomName = faker.person.fullName();
-    //     const type = "Twin";
-    //     const accessible = "true"
-    //     const price = "50"
-    //     const wifi = true
-    //     const refreshments = true
-    //     const tv = false
-    //     const safe = false
-    //     const radio = false
-    //     const views = false
-
-    //     const createRoom = poManager.getCreateRoom(roomName)
-    //     createRoom.createRoom(roomName,type,accessible,price,wifi,refreshments,tv,safe,radio,views)
-
-    //     await expect(createRoom.roomNameCheck).toHaveText(roomName)
-    //     expect(await createRoom.roomTypeCheck()).toEqual(type)
-    //     expect(await createRoom.roomAccessibleCheck()).toEqual(accessible)
-    //     expect(await createRoom.roomPriceCheck()).toEqual(price)
-    //     expect(await createRoom.roomCheckBoxesCheck()).toEqual(createRoom.checkBoxText1)
-    // });
 
     test('Cant create room successfully with empty room name @sanity', async ({page})=>
     {

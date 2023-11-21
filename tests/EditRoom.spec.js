@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { faker } from '@faker-js/faker';
+import { fakerSR_RS_latin as faker } from '@faker-js/faker';
 import {POManager} from '../pages/POmanager';
 import userData from '../data/users.json';
 
