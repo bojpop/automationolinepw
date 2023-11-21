@@ -1,4 +1,4 @@
-import { test, expect, request } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import { fakerSR_RS_latin as faker } from '@faker-js/faker';
 import { POManager } from '../pages/POmanager';
 import userData from '../data/users.json';
@@ -18,8 +18,6 @@ test.describe("Room management", async () => {
         await loginForm.login(userData.User.username, userData.User.password)
 
         await expect(loginForm.loginSuccess).toContainText(loginForm.loginSuccesText)
-        
-        // global.rooms = await fetchData();
     });
 
     const rooms = [
@@ -31,7 +29,7 @@ test.describe("Room management", async () => {
     ]
 
     for (let i = 0; i < rooms.length; i++) {
-        test(`Create room of type ${rooms[i][1]} and price ${rooms[i][3]} successfully @sanity`, async ()=>
+        test(`Create room #${i+1} of type ${rooms[i][1]} and price ${rooms[i][3]} successfully @sanity`, async ()=>
         {
             const roomName = rooms[i][0];
             const type = rooms[i][1];
