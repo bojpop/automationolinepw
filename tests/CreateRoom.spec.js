@@ -1,5 +1,5 @@
 import { test, expect, request } from '@playwright/test';
-
+import { fakerSR_RS_latin as faker } from '@faker-js/faker';
 import { POManager } from '../pages/POmanager';
 import userData from '../data/users.json';
 import { RoomType } from '../pages/CreateRoomPage';
@@ -23,15 +23,15 @@ test.describe("Room management", async () => {
     });
 
     const rooms = [
-        ['114', RoomType.SINGLE, "false", "80", false, false, false, false, false, false],
-        ['115', RoomType.TWIN, "false", "150", true, true, false, false, true, false],
-        ['116', RoomType.DOUBLE, "true", "200", true, true, false, true, true, false],
-        ['117', RoomType.FAMILY, "true", "250", true, true, true, true, true, true],
-        ['118', RoomType.SUITE, "true", "300", true, true, true, true, true, true]
+        [faker.person.fullName(), RoomType.SINGLE, "false", "80", false, false, false, false, false, false],
+        [faker.person.fullName(), RoomType.TWIN, "false", "150", true, true, false, false, true, false],
+        [faker.person.fullName(), RoomType.DOUBLE, "true", "200", true, true, false, true, true, false],
+        [faker.person.fullName(), RoomType.FAMILY, "true", "250", true, true, true, true, true, true],
+        [faker.person.fullName(), RoomType.SUITE, "true", "300", true, true, true, true, true, true]
     ]
 
     for (let i = 0; i < rooms.length; i++) {
-        test(`Create room of type ${rooms[i][1]} and name ${rooms[i][0]} successfully @sanity`, async ()=>
+        test(`Create room of type ${rooms[i][1]} and price ${rooms[i][3]} successfully @sanity`, async ()=>
         {
             const roomName = rooms[i][0];
             const type = rooms[i][1];
