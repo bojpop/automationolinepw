@@ -53,7 +53,7 @@ test.describe("Room management", async () => {
         });
     }
 
-    test('Cant create room successfully with empty room name @sanity', async ({page})=>
+    test('Cant create room successfully with empty room name @sanity', async ({})=>
     {
         const type = "Twin";
         const accessible = "true"
