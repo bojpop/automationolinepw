@@ -20,6 +20,8 @@ export class CreateRoom {
         this.checkBoxText3 = 'WiFi, TV, Radio, Refreshments, Safe, Views';
         this.checkBoxText4 = 'WiFi, TV, Radio, Refreshments, Safe, Views';
         this.errorMessages = page.locator('.alert.alert-danger');
+        this.roomNameEmptyError = page.getByText('Room name must be set');
+        this.priceEmptyOrEqualZeroError = page.getByText('must be greater than or equal to 1');
     }
 
     async hasWifi(wifi){

@@ -53,9 +53,10 @@ test.describe("Room management", async () => {
         });
     }
 
-    test('Cant create room successfully with empty room name @sanity', async ({})=>
+    test('Cant create room successfully with empty room name', async ({})=>
     {
-        const type = "Twin";
+        const roomName = faker.person.fullName()
+        const type = RoomType.SINGLE;
         const accessible = "true"
         const price = "50"
         const wifi = true
@@ -68,5 +69,24 @@ test.describe("Room management", async () => {
         const createRoom = poManager.getCreateRoom('')
         createRoom.createRoom('',type,accessible,price,wifi,refreshments,tv,safe,radio,views)
         await expect(createRoom.errorMessages, 'Error messages are displayed').toBeVisible();
+        await expect(createRoom.roomNameEmptyError).toBeVisible();
+    });
+
+    test('Cant create room successfully with empty price field', async ({})=>
+    {
+        const roomName = faker.person.fullName()
+        const type = RoomType.TWIN;
+        const accessible = "true"
+        const wifi = true
+        const refreshments = true
+        const tv = false
+        const safe = false
+        const radio = false
+        const views = false
+        
+        const createRoom = poManager.getCreateRoom('')
+        createRoom.createRoom(roomName,type,accessible,'',wifi,refreshments,tv,safe,radio,views)
+        await expect(createRoom.errorMessages, 'Error messages are displayed').toBeVisible();
+        await expect(createRoom.priceEmptyOrEqualZeroError).toBeVisible();
     });
 })
