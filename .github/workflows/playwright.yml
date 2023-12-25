@@ -177,7 +177,7 @@ jobs:
           publish_branch: gh-pages
       - name: Delete Unnecessary Artifacts
         id: delete-unnecessary-artifacts
-        uses: geekyeggo/delete-artifact@v2
+        uses: geekyeggo/delete-artifact@v4
         with:
           name: |
             playwright-report-*
