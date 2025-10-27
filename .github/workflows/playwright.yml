@@ -82,7 +82,7 @@ jobs:
           PWTEST_BLOB_REPORT_NAME: ${{ matrix.project }}
       - name: Upload Playwright Blob Report
         id: upload-playwright-blob-report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v5
         if: always()
         with:
           name: playwright-all-blob-reports
@@ -91,7 +91,7 @@ jobs:
           retention-days: 1
       - name: Upload allure results
         id: upload-allure-results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v5
         if: always()
         with:
           name: allure-results-${{ matrix.project }}-${{ matrix.shardIndex }}_${{ matrix.shardTotal }}
